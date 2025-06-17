@@ -1,0 +1,47 @@
+# Version control
+.git
+.gitignore
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.pytest_cache/
+
+# Virtual environment
+.venv/
+venv/
+ENV/
+
+# Environment files
+.env
+.env.*
+
+# Build and distribution
+build/
+dist/
+*.egg-info/
+
+# Testing
+tests/
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+logs/
+*.log
+
+# Docker files (to avoid recursive copying)
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Documentation
+PHASE*_*.md
+DYNAMIC_APPROACH.md
