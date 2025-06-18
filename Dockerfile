@@ -12,15 +12,11 @@ COPY README.md .
 # Copy lock file
 COPY uv.lock .
 
-# Create a virtual environment and install dependencies
-RUN uv venv /app/.venv && \
-    uv pip sync uv.lock
-
-# Copy source code
+# Copy source code (needed for uv sync to build the project)
 COPY src/ ./src/
 
-# Install the project
-RUN uv pip install --no-cache-dir -e .
+# Create a virtual environment and install dependencies
+RUN uv sync --frozen
 
 # Second stage: runtime
 FROM python:3.12-slim
