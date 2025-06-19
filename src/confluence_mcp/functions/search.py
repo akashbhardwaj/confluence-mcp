@@ -222,10 +222,9 @@ def _build_cql_query(
     if content_type:
         cql_parts.append(f"type = {content_type}")
 
-    # Add status filter
-    if not include_archived:
-        cql_parts.append("status != archived")
-
+    # Note: Archived content filtering via 'status' field is not supported in Confluence Cloud REST API
+    # The include_archived parameter is retained for potential future use or different API versions
+    
     # Add date filters if provided
     if created_after:
         cql_parts.append(f'created >= "{created_after}"')

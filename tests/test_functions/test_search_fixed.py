@@ -67,7 +67,7 @@ class TestSearchFunctions(unittest.IsolatedAsyncioTestCase):
 
         # Verify API call
         mock_client.get.assert_called_once_with(
-            "search", {"cql": 'text ~ "test" AND status != archived', "limit": 25}
+            "search", {"cql": 'text ~ "test"', "limit": 25}
         )
 
     @patch("src.confluence_mcp.functions.search.get_client")
@@ -106,7 +106,7 @@ class TestSearchFunctions(unittest.IsolatedAsyncioTestCase):
         mock_client.get.assert_called_once_with(
             "search",
             {
-                "cql": 'text ~ "test" AND space.id = SPACE-123 AND type = page AND status != archived',
+                "cql": 'text ~ "test" AND space.id = SPACE-123 AND type = page',
                 "limit": 10,
             },
         )
@@ -114,13 +114,13 @@ class TestSearchFunctions(unittest.IsolatedAsyncioTestCase):
     def test_build_cql_query_basic(self):
         """Test basic CQL query building."""
         query = _build_cql_query("test")
-        self.assertEqual(query, 'text ~ "test" AND status != archived')
+        self.assertEqual(query, 'text ~ "test"')
 
     def test_build_cql_query_with_filters(self):
         """Test CQL query building with filters."""
         query = _build_cql_query(query="test", space_id="SPACE-123", content_type="page")
         self.assertEqual(
-            query, 'text ~ "test" AND space.id = SPACE-123 AND type = page AND status != archived'
+            query, 'text ~ "test" AND space.id = SPACE-123 AND type = page'
         )
 
     def test_build_cql_query_with_archived(self):

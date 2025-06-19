@@ -59,7 +59,7 @@ class TestEnhancedSearchFunctions(unittest.IsolatedAsyncioTestCase):
 
         # Verify API call
         mock_client.fetch_all_pages.assert_called_once_with(
-            "search", {"cql": 'text ~ "test" AND status != archived', "limit": 25}
+            "search", {"cql": 'text ~ "test"', "limit": 25}
         )
 
     @patch("src.confluence_mcp.functions.search.get_client")
@@ -110,7 +110,7 @@ class TestEnhancedSearchFunctions(unittest.IsolatedAsyncioTestCase):
         self.assertIn('created <= "2023-12-31"', query)
         self.assertIn('lastmodified >= "2023-06-01"', query)
         self.assertIn('lastmodified <= "2023-06-30"', query)
-        self.assertIn("status != archived", query)
+        # Note: status != archived is no longer included as it's not supported by Confluence API
 
     def test_build_cql_query_with_user_filters(self):
         """Test CQL query building with user filters."""
@@ -120,7 +120,7 @@ class TestEnhancedSearchFunctions(unittest.IsolatedAsyncioTestCase):
         self.assertIn('text ~ "test"', query)
         self.assertIn('creator = "admin"', query)
         self.assertIn('contributor = "user123"', query)
-        self.assertIn("status != archived", query)
+        # Note: status != archived is no longer included as it's not supported by Confluence API
 
     def test_build_cql_query_escapes_quotes(self):
         """Test that CQL query building escapes quotes in the query string."""

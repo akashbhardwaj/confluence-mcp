@@ -58,7 +58,7 @@ async def test_search_content_basic(mock_get_client):
 
     # Verify API call
     mock_client.get.assert_called_once_with(
-        "search", {"cql": 'text ~ "test" AND status != archived', "limit": 25}
+        "search", {"cql": 'text ~ "test"', "limit": 25}
     )
 
 
@@ -103,7 +103,7 @@ async def test_search_content_with_filters(mock_get_client):
     mock_client.get.assert_called_once_with(
         "search",
         {
-            "cql": 'text ~ "test" AND space.id = SPACE-123 AND type = page AND status != archived',
+            "cql": 'text ~ "test" AND space.id = SPACE-123 AND type = page',
             "limit": 10,
         },
     )
@@ -133,7 +133,7 @@ async def test_search_content_fetch_all(mock_get_client):
 
     # Verify API call
     mock_client.fetch_all_pages.assert_called_once_with(
-        "search", {"cql": 'text ~ "test" AND status != archived', "limit": 25}
+        "search", {"cql": 'text ~ "test"', "limit": 25}
     )
 
 
@@ -169,7 +169,7 @@ async def test_advanced_search(mock_get_client):
 def test_build_cql_query_basic():
     """Test basic CQL query building."""
     query = _build_cql_query("test")
-    assert query == 'text ~ "test" AND status != archived'
+    assert query == 'text ~ "test"'
 
 
 def test_build_cql_query_with_filters():
@@ -184,6 +184,6 @@ def test_build_cql_query_with_filters():
     )
     assert query == (
         'text ~ "test" AND space.id = SPACE-123 AND type = page AND '
-        'status != archived AND created >= "2023-01-01" AND '
+        'created >= "2023-01-01" AND '
         'lastmodified <= "2023-12-31" AND creator = "johndoe"'
     )
