@@ -9,9 +9,9 @@ Get started quickly using the pre-built Docker image:
 ```bash
 docker run -d \
   --name confluence-mcp \
-  -e CONFLUENCE_URL=https://your-domain.atlassian.net/wiki \
-  -e CONFLUENCE_API_KEY=your-api-key \
-  -e CONFLUENCE_USER_EMAIL=your-email@example.com \
+  -e JIRA_BASE_URL=https://your-domain.atlassian.net/wiki \
+  -e JIRA_API_TOKEN=your-api-key \
+  -e JIRA_API_USER=your-email@example.com \
   --restart unless-stopped \
   ghcr.io/akashbhardwaj/confluence-mcp:latest
 ```
@@ -45,9 +45,9 @@ For local development:
    ```
 3. Set up your environment variables in your shell configuration (e.g., `~/.zshrc` or `~/.bashrc`):
    ```bash
-   export CONFLUENCE_URL=https://your-domain.atlassian.net/wiki
-   export CONFLUENCE_API_KEY=your-api-key
-   export CONFLUENCE_USER_EMAIL=your-email@example.com
+   export JIRA_BASE_URL=https://your-domain.atlassian.net/wiki
+   export JIRA_API_TOKEN=your-api-key
+   export JIRA_API_USER=your-email@example.com
    export DEBUG=false  # Optional: set to true for debug logging
    ```
 4. Reload your shell configuration:
@@ -63,9 +63,9 @@ For local development:
 
 The server requires the following environment variables:
 
-- `CONFLUENCE_URL`: Your Confluence Cloud URL (e.g., `https://your-domain.atlassian.net/wiki`)
-- `CONFLUENCE_API_KEY`: Your Confluence API token
-- `CONFLUENCE_USER_EMAIL`: Email address associated with the API token
+- `JIRA_BASE_URL`: Your Confluence Cloud URL (e.g., `https://your-domain.atlassian.net/wiki`)
+- `JIRA_API_TOKEN`: Your Confluence API token
+- `JIRA_API_USER`: Email address associated with the API token
 - `DEBUG`: (Optional) Set to `true` to enable debug logging
 
 ## Usage
@@ -109,9 +109,9 @@ Pre-built Docker images are available at `ghcr.io/akashbhardwaj/confluence-mcp`.
 ```bash
 docker run -d \
   --name confluence-mcp \
-  -e CONFLUENCE_URL=https://your-domain.atlassian.net/wiki \
-  -e CONFLUENCE_API_KEY=your-api-key \
-  -e CONFLUENCE_USER_EMAIL=your-email@example.com \
+  -e JIRA_BASE_URL=https://your-domain.atlassian.net/wiki \
+  -e JIRA_API_TOKEN=your-api-key \
+  -e JIRA_API_USER=your-email@example.com \
   --restart unless-stopped \
   ghcr.io/akashbhardwaj/confluence-mcp:latest
 ```
@@ -124,9 +124,9 @@ chmod +x build_docker.sh
 
 docker run -d \
   --name confluence-mcp \
-  -e CONFLUENCE_URL=https://your-domain.atlassian.net/wiki \
-  -e CONFLUENCE_API_KEY=your-api-key \
-  -e CONFLUENCE_USER_EMAIL=your-email@example.com \
+  -e JIRA_BASE_URL=https://your-domain.atlassian.net/wiki \
+  -e JIRA_API_TOKEN=your-api-key \
+  -e JIRA_API_USER=your-email@example.com \
   --restart unless-stopped \
   confluence-mcp:latest
 ```

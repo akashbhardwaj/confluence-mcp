@@ -5,7 +5,7 @@ from .page import list_pages, get_page, create_page, update_page, delete_page
 from .search import search_content, advanced_search
 
 __all__ = [
-    "list_spaces", 
+    "list_spaces",
     "get_space",
     "list_pages",
     "get_page",
@@ -13,5 +13,5 @@ __all__ = [
     "update_page",
     "delete_page",
     "search_content",
-    "advanced_search"
+    "advanced_search",
 ]
